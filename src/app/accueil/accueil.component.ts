@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDatepicker } from '@angular/material';
 import Etudiant from '../etudiant';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { emailValidator } from '../email.validator';
+import { ddnValidator } from './ddn.validator';
 
 @Component({
   selector: 'app-accueil',
@@ -14,7 +16,22 @@ export class AccueilComponent implements OnInit {
   mail: string
   dateDeNaissance: Date
 
+  model: FormGroup
+
+  constructor(private formBuilder: FormBuilder) {
+  }
+
   ngOnInit() {
+    this.model = this.formBuilder.group({
+      mail: ['', [
+        Validators.required,
+        emailValidator(this.mail)
+      ]],
+      datedenaisance: ['', [
+        Validators.required,
+        ddnValidator(this.dateDeNaissance)
+      ]]
+    })
   }
 
   isGoodFormat() {
