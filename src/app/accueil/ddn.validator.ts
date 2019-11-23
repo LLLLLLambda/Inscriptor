@@ -8,7 +8,7 @@ export function ddnValidator(ddn: Date): ValidatorFn {
             const ddnMin = new Date()
             ddnMin.setFullYear(ddn.getFullYear() - 3)
             if(isnotValidDate(ddn, ddnMin, ddnMax)) {
-                return {'formatDdn': ddnMin + " au " + ddnMax}
+                return {'formatDdn': (ddnMin + " au " + ddnMax)}
             }
             return null;
         }

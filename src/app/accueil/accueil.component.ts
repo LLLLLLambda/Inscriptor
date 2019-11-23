@@ -23,15 +23,23 @@ export class AccueilComponent implements OnInit {
 
   ngOnInit() {
     this.model = this.formBuilder.group({
-      mail: ['', [
+      email: ['', [
         Validators.required,
         emailValidator(this.mail)
       ]],
       datedenaisance: ['', [
         Validators.required,
         ddnValidator(this.dateDeNaissance)
-      ]]
+      ]],
+      default: ['', []]
     })
+  }
+
+  get email() {
+    return this.model.get('email')
+  }
+  get datedenaisance() {
+    return this.model.get('datedenaisance')
   }
 
   isGoodFormat() {
@@ -41,12 +49,13 @@ export class AccueilComponent implements OnInit {
   addStudient(){
     if(this.isGoodFormat()) {
       console.log('prenom : ' + this.prenom,' nom : ' + this.nom, ' mail : ' + this.mail, ' datedenaisance : ' + this.dateDeNaissance)
+      /*
       this.etudiants.push({
         prenom: this.prenom,
         nom: this.nom,
         mail: this.mail,
         dateDeNaissance: this.dateDeNaissance,
-      })
+      })*/
     }
   }
 }
