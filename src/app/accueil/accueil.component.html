@@ -1,1 +1,25 @@
-<p>accueil works!</p>
+<div class="root">
+    <form class="example-form">
+        <h1>Formulaire d'inscription</h1>
+
+        <mat-form-field class="example-full-width">
+            <input matInput type="text" placeholder="Prenom" [(ngModel)]="prenom" name="prenom">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Nom" type="text" [(ngModel)]="nom" name="nom">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="mail" type="text" [(ngModel)]="mail" name="mail">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [matDatepicker]="dp3" placeholder="Select date" disabled [(ngModel)]="dateDeNaissance" name="dateDeNaissance">
+            <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+            <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+        </mat-form-field>
+
+        <button type="button" (click)="addStudient()">Ajouter</button>
+    </form>
+</div>
