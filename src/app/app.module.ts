@@ -7,7 +7,6 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule, MatNativeDateModule} from '@angular/material';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -21,7 +20,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     MatNativeDateModule,
-    FormsModule,
     MatDatepickerModule,
     ReactiveFormsModule
   ],

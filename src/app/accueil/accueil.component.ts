@@ -11,10 +11,10 @@ import { ddnValidator } from './ddn.validator';
 })
 export class AccueilComponent implements OnInit {
   etudiants: Etudiant[]
-  prenom: string
+  /*prenom: string
   nom: string
   mail: string
-  dateDeNaissance: Date
+  dateDeNaissance: Date*/
 
   model: FormGroup
 
@@ -25,13 +25,14 @@ export class AccueilComponent implements OnInit {
     this.model = this.formBuilder.group({
       email: ['', [
         Validators.required,
-        emailValidator(this.mail)
+        emailValidator()
       ]],
-      datedenaisance: ['', [
+      datedenaisance: [null, [
         Validators.required,
-        ddnValidator(this.dateDeNaissance)
+        ddnValidator()
       ]],
-      default: ['', []]
+      nom: ['', []],
+      prenom: ['', []]
     })
   }
 
@@ -48,7 +49,8 @@ export class AccueilComponent implements OnInit {
 
   addStudient(){
     if(this.isGoodFormat()) {
-      console.log('prenom : ' + this.prenom,' nom : ' + this.nom, ' mail : ' + this.mail, ' datedenaisance : ' + this.dateDeNaissance)
+      console.log('hop : ', this.model)
+     /* console.log('prenom : ' + this.prenom,' nom : ' + this.nom, ' mail : ' + this.mail, ' datedenaisance : ' + this.dateDeNaissance)*/
       /*
       this.etudiants.push({
         prenom: this.prenom,

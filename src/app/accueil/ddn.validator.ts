@@ -1,13 +1,13 @@
 import { ValidatorFn, AbstractControl } from '@angular/forms';
 
-export function ddnValidator(ddn: Date): ValidatorFn {
+export function ddnValidator(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any} | null => {
-        return (ddn) => {
+        return (control) => {
             const ddnMax = new Date()
-            ddnMax.setFullYear(ddn.getFullYear() - 5)
+            ddnMax.setFullYear(control.value.getFullYear() - 5)
             const ddnMin = new Date()
-            ddnMin.setFullYear(ddn.getFullYear() - 3)
-            if(isnotValidDate(ddn, ddnMin, ddnMax)) {
+            ddnMin.setFullYear(control.value.getFullYear() - 3)
+            if(isnotValidDate(control.value, ddnMin, ddnMax)) {
                 return {'formatDdn': (ddnMin + " au " + ddnMax)}
             }
             return null;
