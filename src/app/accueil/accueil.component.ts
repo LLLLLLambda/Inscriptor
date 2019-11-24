@@ -10,11 +10,7 @@ import { ddnValidator } from './ddn.validator';
   styleUrls: ['./accueil.component.css']
 })
 export class AccueilComponent implements OnInit {
-  etudiants: Etudiant[]
-  /*prenom: string
-  nom: string
-  mail: string
-  dateDeNaissance: Date*/
+  etudiants: Etudiant[] = []
 
   model: FormGroup
 
@@ -27,7 +23,7 @@ export class AccueilComponent implements OnInit {
         Validators.required,
         emailValidator()
       ]],
-      datedenaisance: [null, [
+      datedenaissance: [null, [
         Validators.required,
         ddnValidator()
       ]],
@@ -39,25 +35,24 @@ export class AccueilComponent implements OnInit {
   get email() {
     return this.model.get('email')
   }
-  get datedenaisance() {
-    return this.model.get('datedenaisance')
+  get datedenaissance() {
+    return this.model.get('datedenaissance')
   }
-
-  isGoodFormat() {
-    return true;
+  get prenom() {
+    return this.model.get('prenom')
+  }
+  get nom() {
+    return this.model.get('nom')
   }
 
   addStudient(){
-    if(this.isGoodFormat()) {
-      console.log('hop : ', this.model)
-     /* console.log('prenom : ' + this.prenom,' nom : ' + this.nom, ' mail : ' + this.mail, ' datedenaisance : ' + this.dateDeNaissance)*/
-      /*
+    if(this.model.status === "VALID") {
       this.etudiants.push({
-        prenom: this.prenom,
-        nom: this.nom,
-        mail: this.mail,
-        dateDeNaissance: this.dateDeNaissance,
-      })*/
+        prenom: this.model.value.prenom,
+        nom: this.model.value.nom,
+        mail: this.model.value.email,
+        dateDeNaissance: this.model.value.datedenaissance,
+      })
     }
   }
 }
