@@ -3,30 +3,42 @@
         <h1>Formulaire d'inscription</h1>
 
         <mat-form-field class="formFiel">
-            <input matInput formControlName="prenom" type="text" placeholder="Prenom">
+            <input matInput formControlName="prenom" type="text" placeholder="Prénom de l'étudiant">
+          <mat-error *ngIf="prenom.invalid && prenom.errors?.required">
+            Le prénom est obligatoire
+          </mat-error>
+          <mat-error *ngIf="prenom.invalid && prenom.errors?.formatPrenom">
+            {{prenom.errors?.formatPrenom}}
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field class="formFiel">
-            <input matInput formControlName="nom" placeholder="Nom" type="text">
+            <input matInput formControlName="nom" placeholder="Nom de l'étudiant" type="text">
+          <mat-error *ngIf="nom.invalid && nom.errors?.required">
+            Le nom est obligatoire
+          </mat-error>
+          <mat-error *ngIf="nom.invalid && nom.errors?.formatNom">
+            {{nom.errors?.formatNom}}
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field class="formFiel">
-            <input matInput formControlName="email" placeholder="mail" type="text">
-            <mat-error *ngIf="email.invalid && email.error?.required">
+            <input matInput formControlName="email" placeholder="E-mail de l'étudiant" type="text">
+            <mat-error *ngIf="email.invalid && email.errors?.required">
                 L'email est obligatoire
             </mat-error>
-            <mat-error *ngIf="email.invalid && email.error?.formatEmail">
-                L' email doit être de se format : {{email.error?.formatEmail}}
+            <mat-error *ngIf="email.invalid && email.errors?.formatEmail">
+                L' email doit être de se format : {{email.errors?.formatEmail}}
             </mat-error>
         </mat-form-field>
 
         <mat-form-field class="formFiel">
-            <input matInput formControlName="datedenaissance" [matDatepicker]="dp3" placeholder="Select date">
-            <mat-error *ngIf="datedenaissance.invalid && datedenaissance.error?.required">
+            <input matInput formControlName="datedenaissance" [matDatepicker]="dp3" placeholder="Date de Naissance">
+            <mat-error *ngIf="datedenaissance.invalid && datedenaissance.errors?.required">
                 La date de naissance est obligatoire
             </mat-error>
-            <mat-error *ngIf="datedenaissance.invalid && datedenaissance.error?.formatDdn">
-                La date de naissance doit être entre le {{datedenaissance.error?.formatDdn}}
+            <mat-error *ngIf="datedenaissance.invalid && datedenaissance.errors?.formatDdn">
+                La date de naissance ne peut passer dépasser le {{datedenaissance.errors?.formatDdn}}
             </mat-error>
             <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
             <mat-datepicker #dp3 disabled="false"></mat-datepicker>
@@ -37,9 +49,9 @@
 
     <div class="border">
         <div class="container">
-            <span class="element">Prénom Nom</span>
-            <span class="element">Date de naissance</span>
-            <span class="element">Email</span>
+          <span class="element"><b>Prénom Nom</b></span>
+          <span class="element"><b>Date de naissance</b></span>
+          <span class="element"><b>E-mail</b></span>
         </div>
         <div class="ff">
             <app-etudiant *ngFor="let etudiant of etudiants" [e]="etudiant"></app-etudiant>
