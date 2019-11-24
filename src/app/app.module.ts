@@ -8,11 +8,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule, MatNativeDateModule} from '@angular/material';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EtudiantComponent } from './etudiant/etudiant.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AccueilComponent
+    AccueilComponent,
+    EtudiantComponent
   ],
   imports: [
     BrowserModule,

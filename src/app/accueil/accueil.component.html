@@ -34,4 +34,15 @@
 
         <button type="button" (click)="addStudient()">Ajouter</button>
     </form>
+
+    <div class="border">
+        <div class="container">
+            <span class="element">Prénom Nom</span>
+            <span class="element">Date de naissance</span>
+            <span class="element">Email</span>
+        </div>
+        <div class="ff">
+            <app-etudiant *ngFor="let etudiant of etudiants" [e]="etudiant"></app-etudiant>
+        </div>
+    </div>
 </div>

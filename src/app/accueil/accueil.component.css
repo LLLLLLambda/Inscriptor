@@ -18,3 +18,23 @@ button {
     width: 40%;
     margin: 5%;
 }
+
+.container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.border {
+    border: 1px solid black;
+    margin-top: 50px;
+}
+
+.element {
+    text-align: center;
+    width: 30%;
+}
+
+.ff {
+    width: 100%;
+}
