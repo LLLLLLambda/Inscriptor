@@ -23,10 +23,11 @@ button {
     flex-grow: 1;
     display: flex;
     justify-content: space-between;
+  border: #000000 solid 1px;
+  padding: 10px;
 }
 
 .border {
-    border: 1px solid black;
     margin-top: 50px;
 }
 

@@ -2,8 +2,10 @@
     flex-grow: 1;
     display: flex;
     justify-content: space-between;
+    border: #000000 solid 1px;
+    padding: 10px;
 }
-
 .element {
-    width: 30%;
+  text-align: center;
+  width: 30%;
 }

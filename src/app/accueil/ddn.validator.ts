@@ -1,20 +1,25 @@
 import { ValidatorFn, AbstractControl } from '@angular/forms';
+import {formatDate, registerLocaleData} from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+
+registerLocaleData(localeFr, 'fr');
+
 
 export function ddnValidator(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any} | null => {
-        if(control.value) {
-            const ddnMax = new Date()
-            ddnMax.setFullYear(new Date().getFullYear() - 3)
-            const ddnMin = new Date()
-            ddnMin.setFullYear(new Date().getFullYear() - 5)
-            if(isnotValidDate(control.value, ddnMin, ddnMax)) {
-                return {'formatDdn': (ddnMin + " au " + ddnMax)}
+        if (control.value) {
+            const ddnMax = new Date();
+            ddnMax.setFullYear(new Date().getFullYear());
+            if (isnotValidDate(control.value, ddnMax)) {
+              const ddnMaxString = ddnMax.toDateString();
+              const ddnMaxFormatted = formatDate(ddnMaxString, 'dd-MM-yyyy', 'fr');
+              return {'formatDdn': (ddnMaxFormatted)};
             }
         }
         return null;
-    }
+    };
 }
 
-function isnotValidDate(ddn: Date, ddnMin: Date, ddnMax: Date) {
-    return ddn.getTime() < ddnMin.getTime() || ddn.getTime() > ddnMax.getTime()
+function isnotValidDate(ddn: Date, ddnMax: Date) {
+    return ddn.getTime() > ddnMax.getTime();
 }

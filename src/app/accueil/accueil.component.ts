@@ -1,8 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import Etudiant from '../etudiant';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { emailValidator } from '../email.validator';
 import { ddnValidator } from './ddn.validator';
+import {prenomValidator} from '../prenom.validator';
+import {nomValidator} from '../nom.validator';
 
 @Component({
   selector: 'app-accueil',
@@ -10,9 +12,9 @@ import { ddnValidator } from './ddn.validator';
   styleUrls: ['./accueil.component.css']
 })
 export class AccueilComponent implements OnInit {
-  etudiants: Etudiant[] = []
+  etudiants: Etudiant[] = [];
 
-  model: FormGroup
+  model: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
   }
@@ -27,32 +29,38 @@ export class AccueilComponent implements OnInit {
         Validators.required,
         ddnValidator()
       ]],
-      nom: ['', []],
-      prenom: ['', []]
-    })
+      nom: ['', [
+        Validators.required,
+        nomValidator()
+      ]],
+      prenom: ['', [
+        Validators.required,
+        prenomValidator()
+      ]]
+    });
   }
 
   get email() {
-    return this.model.get('email')
+    return this.model.get('email');
   }
   get datedenaissance() {
-    return this.model.get('datedenaissance')
+    return this.model.get('datedenaissance');
   }
   get prenom() {
-    return this.model.get('prenom')
+    return this.model.get('prenom');
   }
   get nom() {
-    return this.model.get('nom')
+    return this.model.get('nom');
   }
 
-  addStudient(){
-    if(this.model.status === "VALID") {
+  addStudient() {
+    if (this.model.status === 'VALID') {
       this.etudiants.push({
         prenom: this.model.value.prenom,
         nom: this.model.value.nom,
         mail: this.model.value.email,
         dateDeNaissance: this.model.value.datedenaissance,
-      })
+      });
     }
   }
 }
