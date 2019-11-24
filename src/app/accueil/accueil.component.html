@@ -21,15 +21,15 @@
         </mat-form-field>
 
         <mat-form-field class="formFiel">
-            <input matInput formControlName="datedenaisance" [matDatepicker]="dp3" placeholder="Select date" disabled>
-            <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
-            <mat-datepicker #dp3 disabled="false"></mat-datepicker>
-            <mat-error *ngIf="datedenaisance.invalid && datedenaisance.error?.required">
+            <input matInput formControlName="datedenaissance" [matDatepicker]="dp3" placeholder="Select date">
+            <mat-error *ngIf="datedenaissance.invalid && datedenaissance.error?.required">
                 La date de naissance est obligatoire
             </mat-error>
-            <mat-error *ngIf="datedenaisance.invalid && datedenaisance.error?.formatDdn">
-                La date de naissance doit être entre le {{datedenaisance.error?.formatDdn}}
+            <mat-error *ngIf="datedenaissance.invalid && datedenaissance.error?.formatDdn">
+                La date de naissance doit être entre le {{datedenaissance.error?.formatDdn}}
             </mat-error>
+            <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+            <mat-datepicker #dp3 disabled="false"></mat-datepicker>
         </mat-form-field>
 
         <button type="button" (click)="addStudient()">Ajouter</button>
