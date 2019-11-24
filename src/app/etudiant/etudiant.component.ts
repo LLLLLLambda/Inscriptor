@@ -15,5 +15,4 @@ export class EtudiantComponent implements OnInit {
 
   @Input()
   e: Etudiant;
-
 }

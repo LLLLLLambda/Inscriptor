@@ -54,6 +54,5 @@ export class AccueilComponent implements OnInit {
         dateDeNaissance: this.model.value.datedenaissance,
       })
     }
-    console.log('rrr', this.etudiants)
   }
 }
